@@ -13,6 +13,7 @@ import logging
 from random import randint
 import postgre 
 
+
 timeTexto = 0
 canTalk = True
 muchoTexto = 0
@@ -116,6 +117,13 @@ def echo(bot, update):
         rows = postgre.select("select * from capitulos where lower(anime) = '"+cap[1]+"' and episodio ="+cap[0])
         for row in rows:
             bot.send_message(chat_id=update.message.chat_id, text='Titulo: '+row[0]+ ' Cap: '+ str(row[1])+' Url: '+row[2])
+    elif re.search(r'\binformativo matinal\b', mensajeLower):
+        rows = postgre.select("select * from informativo where fecha = '"+ str(datetime.today())+"'")
+        if len(rows) == 0:
+             bot.send_photo(chat_id=update.message.chat_id, photo=open(dataPath + '/photo/informativo.jpg', 'rb'))
+        for row in rows:
+            bot.send_message(chat_id=update.message.chat_id, text=row[1])
+        
 
 
 
