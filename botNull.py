@@ -175,25 +175,31 @@ def horaPatito(update, now):
         #contestar a mensaje
         update.message.reply_text('Enhorabuena ' + update.message.from_user.name + ' por la hora patito')
 
+
+def horaPalitoHandler(update, now):
+
+    if (now.hour == 23 or now.hour == 11) and now.minute == 11:
+        horaPalito4(update)
+    elif now.hour == 1 and now.minute == 11:
+        horaPalito3(update)
+
 def horaPalito4(update, now):
-    if (now.hour == 23 and now.minute == 11) or (now.hour == 11 and now.minute == 11):
-        #TODO: ver si el usuario esta en la base de datos
+    #TODO: ver si el usuario esta en la base de datos
 
-        # enviar imagen sticker
-        botGlobal.sendDocument(chat_id=update.message.chat_id, document=open(dataPath + '/photo/horapalito4.webp', 'rb'))
+    # enviar imagen sticker
+    botGlobal.sendDocument(chat_id=update.message.chat_id, document=open(dataPath + '/photo/horapalito4.webp', 'rb'))
 
-        #contestar a mensaje
-        update.message.reply_text('Hora palito!!!')
+    #contestar a mensaje
+    update.message.reply_text('Hora palito!!!')
 
 def horaPalito3(update, now):
-    if now.hour == 1 and now.minute == 11:
-        #TODO: ver si el usuario esta en la base de datos
+    #TODO: ver si el usuario esta en la base de datos
 
-        # enviar imagen sticker
-        botGlobal.sendDocument(chat_id=update.message.chat_id, document=open(dataPath + '/photo/horapalito3.webp', 'rb'))
+    # enviar imagen sticker
+    botGlobal.sendDocument(chat_id=update.message.chat_id, document=open(dataPath + '/photo/horapalito3.webp', 'rb'))
 
-        #contestar a mensaje
-        update.message.reply_text('Hora palito pero les falta uno :(')
+    #contestar a mensaje
+    update.message.reply_text('Hora palito pero les falta uno :(')
 
 def horaPi(update, now):
     if now.hour == 3 and now.minute == 14:
@@ -204,6 +210,16 @@ def horaPi(update, now):
 
         #contestar a mensaje
         update.message.reply_text('Muy bien ' + update.message.from_user.name + ' máquina ahora a dormir que es tarde')
+
+def horaPorrito(update, now):
+    if (now.hour == 4 or now.hour == 16) and now.minute == 20:
+        #TODO: ver si el usuario esta en la base de datos
+
+        # enviar imagen sticker
+        botGlobal.sendDocument(chat_id=update.message.chat_id, document=open(dataPath + '/photo/horaporrito.webp', 'rb'))
+
+        #contestar a mensaje
+        update.message.reply_text(update.message.from_user.name + ' fúmatelo a mi salud crack')
         
 def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
