@@ -65,8 +65,6 @@ def echo(bot, update):
 
     botGlobal = bot
 
-    botGlobal = bot
-
     mensajeLower = update.message.text.lower()
 
     #if (datetime.now() - timeTexto).total_seconds() < 60 and muchoTexto > 20:
