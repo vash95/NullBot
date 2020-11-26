@@ -155,7 +155,7 @@ def cmd_capis(bot, update):
     animeCaps(bot, update, 5)
  
 def horaPatito(update, now):
-    if now.hour == 22 and now.minute > 1 and now.minute < 22:
+    if now.hour == 22 and now.minute == 22:
         #TODO: ver si el usuario esta en la base de datos
         
         # si esta, sumar 1 al contador, actualizar dia de ultimo patito igual a hoy
