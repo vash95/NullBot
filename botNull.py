@@ -17,6 +17,7 @@ import postgre
 timeTexto = 0
 canTalk = True
 muchoTexto = 0
+# holi desde develop
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
 
