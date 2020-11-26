@@ -156,7 +156,7 @@ def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
 
 # Imprime un mensaje
-def printTexto(bot, update, mensaje):
+def printTexto(update, mensaje):
     #bot.send_message(chat_id=update.message.chat_id, parse_mode='HTML', text="""<b>titulo</b><p>capi<p>url""")
     bot.send_message(chat_id=update.message.chat_id, text = mensaje)
 
