@@ -60,7 +60,10 @@ def echo(bot, update):
 
     global canTalk
     global muchoTexto 
-    global timeTexto 
+    global timeTexto
+    global botGlobal
+
+    botGlobal = bot
 
     mensajeLower = update.message.text.lower()
 
@@ -127,6 +130,9 @@ def echo(bot, update):
             bot.send_message(chat_id=update.message.chat_id, text=row[1])
     elif re.search(r'\bquien es el rey\b', mensajeLower):
         printTexto(update, "El pajero es el rey bb")
+    elif re.search(r'\bglobal\b', mensajeLower):
+        printTextoGlobal(update, "my name is jeff")
+        
         
 
 
@@ -159,6 +165,11 @@ def error(bot, update, error):
 def printTexto(update, mensaje):
     #bot.send_message(chat_id=update.message.chat_id, parse_mode='HTML', text="""<b>titulo</b><p>capi<p>url""")
     bot.send_message(chat_id=update.message.chat_id, text = mensaje)
+
+# Imprime un mensaje
+def printTextoGlobal(update, mensaje):
+    #bot.send_message(chat_id=update.message.chat_id, parse_mode='HTML', text="""<b>titulo</b><p>capi<p>url""")
+    botGlobal.send_message(chat_id=update.message.chat_id, text = mensaje)
 
 def stop(bot, update):
     if isAdmin(bot, update):
