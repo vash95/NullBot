@@ -70,9 +70,10 @@ def echo(bot, update):
     #if (datetime.now() - timeTexto).total_seconds() < 60 and muchoTexto > 20:
     #   bot.sendDocument(chat_id=update.message.chat_id, document=open(dataPath + '/photo/texto.webp', 'rb'))
 
+    now = datetime.now()
     #patito
     if re.search(r'\bhora patito\b', mensajeLower):
-        horaPatito(update)
+        horaPatito(update,now)
 
     #basicos
     if update.message.text != None and "null stop" == mensajeLower:
@@ -82,7 +83,6 @@ def echo(bot, update):
 
     #null
     if re.search(r'\bpaja\b', mensajeLower):
-        now = datetime.now()
         if now.hour < 18 and now.hour > 8  and datetime.today().weekday() <= 4  :
             update.message.reply_text('Deja de hacerte pajas ' + update.message.from_user.name + ' en el trabajo')
         else:
@@ -154,8 +154,8 @@ def isAdmin(bot, update):
 def cmd_capis(bot, update):
     animeCaps(bot, update, 5)
  
-def horaPatito(update):
-    if datetime.datetime.hour == 22 and datetime.datetime.minute > 1 and datetime.datetime.minute > 22:
+def horaPatito(update, now):
+    if now.hour == 22 and now.minute > 1 and now.minute < 22:
         #TODO: ver si el usuario esta en la base de datos
         
         # si esta, sumar 1 al contador, actualizar dia de ultimo patito igual a hoy
