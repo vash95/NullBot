@@ -1,4 +1,4 @@
 webBot.py
 botTweet.py
 .vs
-.sqlite
+*.sqlite
