@@ -70,9 +70,9 @@ def echo(bot, update):
     #if (datetime.now() - timeTexto).total_seconds() < 60 and muchoTexto > 20:
     #   bot.sendDocument(chat_id=update.message.chat_id, document=open(dataPath + '/photo/texto.webp', 'rb'))
 
-    #pajero
-    if datetime.now().hour == 22 and datetime.now().minute == 35  and re.search(r'\bhora patito\b', mensajeLower):
-        update.message.reply_text('Felicidades')
+    #patito
+    if re.search(r'\bhora patito\b', mensajeLower):
+        horaPatito(update)
 
     #basicos
     if update.message.text != None and "null stop" == mensajeLower:
@@ -153,7 +153,21 @@ def isAdmin(bot, update):
 # COMANDO: imprime 5 capis nuevos
 def cmd_capis(bot, update):
     animeCaps(bot, update, 5)
-      
+ 
+def horaPatito(update):
+    if datetime.datetime.hour == 22 and datetime.datetime.minute > 1 and datetime.datetime.minute > 22:
+        #TODO: ver si el usuario esta en la base de datos
+        
+        # si esta, sumar 1 al contador, actualizar dia de ultimo patito igual a hoy
+
+        # else, crear registro en base de datos con su id, contador a 1, ultimo dia de patito igual a hoy
+
+        # enviar imagen sticker
+        botGlobal.sendDocument(chat_id=update.message.chat_id, document=open(dataPath + '/photo/paptito.webp', 'rb'))
+
+        #contestar a mensaje
+        update.message.reply_text('Enhorabuena ' + update.message.from_user.name + ' por la hora patito')
+        
 def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
 

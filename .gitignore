@@ -3,3 +3,6 @@ botTweet.py
 .vs
 .suo
 .sqlite
+/__pycache__
+/module.py
+/unitest.py
