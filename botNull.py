@@ -13,10 +13,11 @@ import logging
 from random import randint
 import postgre 
 
-
+botGlobal = 0 
 timeTexto = 0
 canTalk = True
 muchoTexto = 0
+# holi desde develop
 # holi
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
@@ -59,7 +60,10 @@ def echo(bot, update):
 
     global canTalk
     global muchoTexto 
-    global timeTexto 
+    global timeTexto
+    global botGlobal
+
+    botGlobal = bot
 
     mensajeLower = update.message.text.lower()
 
@@ -124,6 +128,11 @@ def echo(bot, update):
              bot.send_photo(chat_id=update.message.chat_id, photo=open(dataPath + '/photo/informativo.jpg', 'rb'))
         for row in rows:
             bot.send_message(chat_id=update.message.chat_id, text=row[1])
+    elif re.search(r'\bquien es el rey\b', mensajeLower):
+        printTexto(update, "El pajero es el rey bb")
+    elif re.search(r'\bglobal\b', mensajeLower):
+        printTextoGlobal(update, "my name is jeff")
+        
         
 
 
@@ -151,6 +160,16 @@ def cmd_capis(bot, update):
       
 def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
+
+# Imprime un mensaje
+def printTexto(update, mensaje):
+    #bot.send_message(chat_id=update.message.chat_id, parse_mode='HTML', text="""<b>titulo</b><p>capi<p>url""")
+    botGlobal.send_message(chat_id=update.message.chat_id, text = mensaje)
+
+# Imprime un mensaje
+def printTextoGlobal(update, mensaje):
+    #bot.send_message(chat_id=update.message.chat_id, parse_mode='HTML', text="""<b>titulo</b><p>capi<p>url""")
+    botGlobal.send_message(chat_id=update.message.chat_id, text = mensaje)
 
 def stop(bot, update):
     if isAdmin(bot, update):
