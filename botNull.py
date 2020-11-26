@@ -125,6 +125,8 @@ def echo(bot, update):
              bot.send_photo(chat_id=update.message.chat_id, photo=open(dataPath + '/photo/informativo.jpg', 'rb'))
         for row in rows:
             bot.send_message(chat_id=update.message.chat_id, text=row[1])
+    elif re.search(r'\bquien es el rey\b', mensajeLower):
+        printTexto(update, "El pajero es el rey bb")
         
 
 
@@ -152,6 +154,11 @@ def cmd_capis(bot, update):
       
 def error(bot, update, error):
     logger.warn('Update "%s" caused error "%s"' % (update, error))
+
+# Imprime un mensaje
+def printTexto(bot, update, mensaje):
+    #bot.send_message(chat_id=update.message.chat_id, parse_mode='HTML', text="""<b>titulo</b><p>capi<p>url""")
+    bot.send_message(chat_id=update.message.chat_id, text = mensaje)
 
 def stop(bot, update):
     if isAdmin(bot, update):
