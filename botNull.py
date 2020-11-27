@@ -183,7 +183,7 @@ def horaPalitoHandler(update, now):
     elif now.hour == 1 and now.minute == 11:
         horaPalito3(update)
 
-def horaPalito4(update, now):
+def horaPalito4(update):
     #TODO: ver si el usuario esta en la base de datos
 
     # enviar imagen sticker
@@ -192,7 +192,7 @@ def horaPalito4(update, now):
     #contestar a mensaje
     update.message.reply_text('Hora palito!!!')
 
-def horaPalito3(update, now):
+def horaPalito3(update):
     #TODO: ver si el usuario esta en la base de datos
 
     # enviar imagen sticker
